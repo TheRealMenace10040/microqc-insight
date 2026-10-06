@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "MicroQC_Insight"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f2c4e835-3f5f-4a07-9a2f-a5385815433a"
+  }
+}

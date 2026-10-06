@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "v018microqc",
+  "position": {
+    "x": 20,
+    "y": 655,
+    "z": 7000,
+    "height": 405,
+    "width": 613,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flagged_results"
+                    }
+                  },
+                  "Property": "Result.Entered_By"
+                }
+              },
+              "queryRef": "flagged_results.Result.Entered_By",
+              "nativeQueryRef": "Result.Entered_By",
+              "active": true,
+              "displayName": "Analyst"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_KPIs"
+                    }
+                  },
+                  "Property": "Total Results"
+                }
+              },
+              "queryRef": "_KPIs.Total Results",
+              "nativeQueryRef": "Total Results"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Analyst workload (results entered)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

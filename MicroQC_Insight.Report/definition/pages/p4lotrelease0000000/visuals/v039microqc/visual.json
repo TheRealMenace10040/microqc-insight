@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "v039microqc",
+  "position": {
+    "x": 20,
+    "y": 655,
+    "z": 10000,
+    "height": 405,
+    "width": 1880,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "INV_ID"
+                }
+              },
+              "queryRef": "INVESTIGATION.INV_ID",
+              "nativeQueryRef": "INV_ID",
+              "displayName": "Investigation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "RESULT_NUMBER"
+                }
+              },
+              "queryRef": "INVESTIGATION.RESULT_NUMBER",
+              "nativeQueryRef": "RESULT_NUMBER",
+              "displayName": "Result #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "PHASE"
+                }
+              },
+              "queryRef": "INVESTIGATION.PHASE",
+              "nativeQueryRef": "PHASE",
+              "displayName": "Phase"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "OPENED"
+                }
+              },
+              "queryRef": "INVESTIGATION.OPENED",
+              "nativeQueryRef": "OPENED",
+              "displayName": "Opened"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "CLOSED"
+                }
+              },
+              "queryRef": "INVESTIGATION.CLOSED",
+              "nativeQueryRef": "CLOSED",
+              "displayName": "Closed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "CAPA_ID"
+                }
+              },
+              "queryRef": "INVESTIGATION.CAPA_ID",
+              "nativeQueryRef": "CAPA_ID",
+              "displayName": "CAPA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "INVESTIGATION"
+                    }
+                  },
+                  "Property": "ASSIGNABLE_CAUSE"
+                }
+              },
+              "queryRef": "INVESTIGATION.ASSIGNABLE_CAUSE",
+              "nativeQueryRef": "ASSIGNABLE_CAUSE",
+              "displayName": "Assignable cause"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OOS investigations (Phase I)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

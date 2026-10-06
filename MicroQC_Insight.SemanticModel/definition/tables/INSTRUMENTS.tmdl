@@ -1,0 +1,47 @@
+table INSTRUMENTS
+	lineageTag: d0426e07-f43c-475a-8294-94b01b70f5c6
+
+	column NAME
+		dataType: string
+		lineageTag: e52c1b7c-e569-4c05-a841-132316a04fa2
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column TYPE
+		dataType: string
+		lineageTag: 12b228a8-c713-40bd-b720-f49f550accde
+		summarizeBy: none
+		sourceColumn: TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CALIB_DUE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4a71b572-aa31-4b5c-9a8b-4fb05db35230
+		summarizeBy: none
+		sourceColumn: CALIB_DUE
+
+		variation Variation
+			isDefault
+			relationship: cca77557-c81d-4d35-98ef-d2746104cb25
+			defaultHierarchy: LocalDateTable_4aa4119e-9380-4c7b-9d91-d4e9504f6961.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition INSTRUMENTS = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\INSTRUMENTS.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"NAME", type text}, {"TYPE", type text}, {"CALIB_DUE", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

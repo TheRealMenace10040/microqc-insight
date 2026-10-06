@@ -1,0 +1,183 @@
+table RESULT
+	lineageTag: c9815637-a8d0-482d-96cc-55aada69c427
+
+	column RESULT_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: afc9904a-ae65-4fe2-9ad5-bbcb10b8b946
+		summarizeBy: sum
+		sourceColumn: RESULT_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TEST_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: c03cc73c-20a1-4d39-82e3-3e178ffd2eee
+		summarizeBy: none
+		sourceColumn: TEST_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		lineageTag: 0582e65d-1141-4611-97db-d116a1de8f33
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REPLICATE_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: 47c247d2-27ea-477e-891a-0de27640fa38
+		summarizeBy: sum
+		sourceColumn: REPLICATE_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENTRY
+		dataType: double
+		lineageTag: 21e7d35e-2fed-4e3b-87b3-da7b67e03442
+		summarizeBy: sum
+		sourceColumn: ENTRY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FORMATTED_ENTRY
+		dataType: double
+		lineageTag: f55348ce-c546-45ea-915e-82ea0c70187b
+		summarizeBy: sum
+		sourceColumn: FORMATTED_ENTRY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUMERIC_ENTRY
+		dataType: double
+		lineageTag: 8f5368e6-2187-401c-a5bd-67432aa7cce8
+		summarizeBy: sum
+		sourceColumn: NUMERIC_ENTRY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITS
+		dataType: string
+		lineageTag: aa376d2f-0888-4b75-a747-5d3eb0354822
+		summarizeBy: none
+		sourceColumn: UNITS
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIN_LIMIT
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bd08bde-b007-4f7b-8062-0a0f1f0dbb2e
+		summarizeBy: sum
+		sourceColumn: MIN_LIMIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAX_LIMIT
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bb56bcb-454a-41a7-b9db-f5c8387108da
+		summarizeBy: sum
+		sourceColumn: MAX_LIMIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ALERT_LIMIT
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c65ddfe-e76d-4d0e-bf0c-8163cb97f9ee
+		summarizeBy: sum
+		sourceColumn: ALERT_LIMIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_SPEC
+		dataType: string
+		lineageTag: 6d865177-2f45-4f1e-a6d5-f3eb29ef8c49
+		summarizeBy: none
+		sourceColumn: IN_SPEC
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: 92c903fc-ebea-4821-9aa7-304259862d24
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENTERED_BY
+		dataType: string
+		lineageTag: b826f456-1a30-4f3e-999c-41d2eae715e5
+		summarizeBy: none
+		sourceColumn: ENTERED_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENTERED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1a22cc01-5ee5-4b73-953d-81e762da4f99
+		summarizeBy: none
+		sourceColumn: ENTERED_ON
+
+		variation Variation
+			isDefault
+			relationship: 16ae4569-d31b-4327-8ee1-4b51d186addf
+			defaultHierarchy: LocalDateTable_8cdea4fe-5645-47b8-9474-bc5e82a744bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEWED_BY
+		dataType: string
+		lineageTag: e08a5219-4c6f-4cd0-89ed-28ab577d2545
+		summarizeBy: none
+		sourceColumn: REVIEWED_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEWED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6cc06f1a-bcfc-4382-84fc-1a046a6f9e27
+		summarizeBy: none
+		sourceColumn: REVIEWED_ON
+
+		variation Variation
+			isDefault
+			relationship: 04efd0b3-36c5-4f10-8f40-10083998a947
+			defaultHierarchy: LocalDateTable_c4658ce4-5fe8-45da-82ab-0f53b6de2eda.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column REPORTABLE
+		dataType: string
+		lineageTag: ffe4003f-fe03-4f0b-9739-3bd546d782f3
+		summarizeBy: none
+		sourceColumn: REPORTABLE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RESULT = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\RESULT.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RESULT_NUMBER", Int64.Type}, {"TEST_NUMBER", Int64.Type}, {"NAME", type text}, {"REPLICATE_NUMBER", Int64.Type}, {"ENTRY", type number}, {"FORMATTED_ENTRY", type number}, {"NUMERIC_ENTRY", type number}, {"UNITS", type text}, {"MIN_LIMIT", Int64.Type}, {"MAX_LIMIT", Int64.Type}, {"ALERT_LIMIT", Int64.Type}, {"IN_SPEC", type text}, {"STATUS", type text}, {"ENTERED_BY", type text}, {"ENTERED_ON", type datetime}, {"REVIEWED_BY", type text}, {"REVIEWED_ON", type datetime}, {"REPORTABLE", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

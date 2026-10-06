@@ -1,0 +1,144 @@
+relationship 1a2433fb-f2bb-4a5a-83bc-8d98434fc6b2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.LOGIN_DATE
+	toColumn: LocalDateTable_b534babe-45ed-4a16-98e4-864773c31e0c.Date
+
+relationship e80e6777-b0bc-4482-b991-b7157b82fbad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.CHANGED_ON
+	toColumn: LocalDateTable_caf16bb6-7484-4576-88ea-228c98a59126.Date
+
+relationship fa5d8c38-d1bc-426b-9b96-1ee6e50eba55
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.DUE_DATE
+	toColumn: LocalDateTable_ab6abde8-3fe7-42e5-bca9-2a0784197553.Date
+
+relationship fbf2e38e-b884-4e05-b5ca-567ffc19c939
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.DATE_RECEIVED
+	toColumn: LocalDateTable_9376e122-f1d3-401f-aad3-1d56338eeb8b.Date
+
+relationship e6ffb774-2071-4265-9fae-456de29fe980
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.DATE_COMPLETED
+	toColumn: LocalDateTable_e50c5b23-4ccd-4695-bd5b-cfd3997a4313.Date
+
+relationship 86908fa3-fac8-4215-8ce6-dac5e37bbfae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAMPLE.DATE_REVIEWED
+	toColumn: LocalDateTable_9440864b-8ee3-4a58-9754-9c11f149dd32.Date
+
+relationship 7cc3e488-599d-41ee-9234-a852e6c8aeee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TEST.DATE_RECEIVED
+	toColumn: LocalDateTable_9c88795d-a283-404c-a7d7-20c12b5016b5.Date
+
+relationship 7b90d8cf-d563-4825-937b-1a53b29a2a9d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TEST.DATE_STARTED
+	toColumn: LocalDateTable_13ad0e54-7b28-4414-be12-acf9467d9a41.Date
+
+relationship 7f3ee2e0-adb5-4de1-9f41-ddc12fc7ac2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TEST.DATE_COMPLETED
+	toColumn: LocalDateTable_31245fea-9bbd-4e58-a25e-028538d6b6c2.Date
+
+relationship AutoDetected_b551f346-066c-4564-884f-a7e1021ff8d5
+	fromColumn: TEST.SAMPLE_NUMBER
+	toColumn: SAMPLE.SAMPLE_NUMBER
+
+relationship 16ae4569-d31b-4327-8ee1-4b51d186addf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RESULT.ENTERED_ON
+	toColumn: LocalDateTable_8cdea4fe-5645-47b8-9474-bc5e82a744bc.Date
+
+relationship 04efd0b3-36c5-4f10-8f40-10083998a947
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RESULT.REVIEWED_ON
+	toColumn: LocalDateTable_c4658ce4-5fe8-45da-82ab-0f53b6de2eda.Date
+
+relationship AutoDetected_06c66f34-77e6-4c00-a920-ad40ad18c7e7
+	fromColumn: RESULT.TEST_NUMBER
+	toColumn: TEST.TEST_NUMBER
+
+relationship 7c9f06eb-2c09-4b36-ab93-1c0eeea74125
+	joinOnDateBehavior: datePartOnly
+	fromColumn: LOT.MFG_DATE
+	toColumn: LocalDateTable_60d0ad4b-970b-40f5-924e-262aa08b4356.Date
+
+relationship 5432db48-25a7-458f-90e4-476f880de717
+	joinOnDateBehavior: datePartOnly
+	fromColumn: LOT.RELEASED_ON
+	toColumn: LocalDateTable_c8178e72-9956-4b89-800f-d1ae81b41618.Date
+
+relationship cca77557-c81d-4d35-98ef-d2746104cb25
+	joinOnDateBehavior: datePartOnly
+	fromColumn: INSTRUMENTS.CALIB_DUE
+	toColumn: LocalDateTable_4aa4119e-9380-4c7b-9d91-d4e9504f6961.Date
+
+relationship 78c4896f-c172-41b6-9f8a-44a4659c791a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AUDIT_TRAIL.CHANGED_ON
+	toColumn: LocalDateTable_8640ea2d-6a27-475f-b477-ad321e46c4ff.Date
+
+relationship 17325136-f46a-40ce-89f6-5e12a680ddd4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: INVESTIGATION.OPENED
+	toColumn: LocalDateTable_db7d143a-0b5c-4f0b-9e7b-02b06c802fa5.Date
+
+relationship ae89c57f-a240-4097-aa49-7753e0edb84f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: INVESTIGATION.CLOSED
+	toColumn: LocalDateTable_6af768c8-edd7-4e49-8cbf-7826e06de9b4.Date
+
+relationship fa405ee1-cdf7-4992-b3ee-048b5841e8f6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Sample.Login_Date'
+	toColumn: LocalDateTable_c4a94b48-1992-4942-a005-48b735a03c01.Date
+
+relationship 7ad21a9e-68b8-435c-8efc-cb9f2884f26b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Sample.Due_Date'
+	toColumn: LocalDateTable_1f32a517-b2f9-448a-8334-c8f0ae2ff663.Date
+
+relationship 201bac35-210f-4413-82b3-efdbd6db86af
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Sample.Date_Completed'
+	toColumn: LocalDateTable_35919dc7-a2d6-4748-b458-c4e6e417220a.Date
+
+relationship 0062a40a-f020-4891-80e1-04c3e5cad9e5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Sample.Date_Reviewed'
+	toColumn: LocalDateTable_592f888e-54d5-4f6c-839e-47e5e0c6a4e4.Date
+
+relationship aad512a8-d108-4e3f-a921-55269e134942
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Result.Entered_On'
+	toColumn: LocalDateTable_b9975ca9-013b-4154-be63-eac0fe5c723d.Date
+
+relationship 0071b788-95d5-4b87-b39c-5087eba1568a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: flagged_results.'Result.Reviewed_On'
+	toColumn: LocalDateTable_b10f029b-3be3-4141-9c4d-e28c13a37dba.Date
+
+relationship AutoDetected_f121991f-6450-403d-8319-bdb36087fff7
+	fromColumn: flagged_results.'Sample.Sample_Number'
+	toColumn: SAMPLE.SAMPLE_NUMBER
+
+relationship AutoDetected_20d97c28-31dc-46fb-a867-10399b7d3e02
+	isActive: false
+	fromColumn: flagged_results.'Test.Test_Number'
+	toColumn: TEST.TEST_NUMBER
+
+relationship rel_SAMPLE_LOT
+	fromColumn: SAMPLE.LOT
+	toColumn: LOT.LOT_NUMBER
+
+relationship rel_TEST_INSTRUMENTS
+	fromColumn: TEST.INSTRUMENT
+	toColumn: INSTRUMENTS.NAME
+
+relationship rel_RESULT_USERS
+	fromColumn: RESULT.ENTERED_BY
+	toColumn: LIMS_USERS.USER_NAME
+

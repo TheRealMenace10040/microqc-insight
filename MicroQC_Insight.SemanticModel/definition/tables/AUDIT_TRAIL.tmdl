@@ -1,0 +1,88 @@
+table AUDIT_TRAIL
+	lineageTag: 7d49e320-7916-4fa8-b351-cfed8547b494
+
+	column TABLE_NAME
+		dataType: string
+		lineageTag: fdc3365a-3d9f-4563-9596-eed580eb20a2
+		summarizeBy: none
+		sourceColumn: TABLE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column RECORD_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c10b1b6-946c-40a9-8b8e-b2f0da0dcc90
+		summarizeBy: sum
+		sourceColumn: RECORD_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIELD
+		dataType: string
+		lineageTag: 581fc0e5-e4eb-4be3-9b88-1e03c234f67e
+		summarizeBy: none
+		sourceColumn: FIELD
+
+		annotation SummarizationSetBy = Automatic
+
+	column OLD_VALUE
+		dataType: int64
+		formatString: 0
+		lineageTag: 01073139-13cc-4dec-95e7-5e1968a8249e
+		summarizeBy: sum
+		sourceColumn: OLD_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEW_VALUE
+		dataType: int64
+		formatString: 0
+		lineageTag: 492900b3-d86b-46cf-84d3-6015514ce226
+		summarizeBy: sum
+		sourceColumn: NEW_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANGED_BY
+		dataType: string
+		lineageTag: 280e14eb-c04d-48de-a7bd-580f948eba3b
+		summarizeBy: none
+		sourceColumn: CHANGED_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANGED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9c5a8206-7a9b-499f-8563-cd2492cd7b21
+		summarizeBy: none
+		sourceColumn: CHANGED_ON
+
+		variation Variation
+			isDefault
+			relationship: 78c4896f-c172-41b6-9f8a-44a4659c791a
+			defaultHierarchy: LocalDateTable_8640ea2d-6a27-475f-b477-ad321e46c4ff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column REASON
+		dataType: string
+		lineageTag: 3cfeadbc-b50f-4e3d-a25f-4c9c2d5ebb49
+		summarizeBy: none
+		sourceColumn: REASON
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AUDIT_TRAIL = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\AUDIT_TRAIL.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"TABLE_NAME", type text}, {"RECORD_KEY", Int64.Type}, {"FIELD", type text}, {"OLD_VALUE", Int64.Type}, {"NEW_VALUE", Int64.Type}, {"CHANGED_BY", type text}, {"CHANGED_ON", type datetime}, {"REASON", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

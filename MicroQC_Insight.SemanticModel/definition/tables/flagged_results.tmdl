@@ -1,0 +1,337 @@
+table flagged_results
+	lineageTag: e29cb39a-cf94-4458-9e25-909111262a4d
+
+	column 'Sample.Sample_Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6cdf6195-8ec0-416f-921b-02175159067c
+		summarizeBy: none
+		sourceColumn: Sample.Sample_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Text_Id'
+		dataType: string
+		lineageTag: c562e1c9-75e7-4589-94e3-b49d8cece8ff
+		summarizeBy: none
+		sourceColumn: Sample.Text_Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Sample_Type'
+		dataType: string
+		lineageTag: a9f4527b-3533-4848-9dfe-af1b280dce9a
+		summarizeBy: none
+		sourceColumn: Sample.Sample_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Location'
+		dataType: string
+		lineageTag: 093d8293-18aa-445d-b32c-bfeffd283055
+		summarizeBy: none
+		sourceColumn: Sample.Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Sampling_Point'
+		dataType: string
+		lineageTag: 69683879-2b7f-4161-a7fb-dcaa2fe9ab57
+		summarizeBy: none
+		sourceColumn: Sample.Sampling_Point
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Product'
+		dataType: string
+		lineageTag: 8b2e7c97-9ebf-4524-9051-cc6d2931f667
+		summarizeBy: none
+		sourceColumn: Sample.Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Lot'
+		dataType: string
+		lineageTag: 38220fdf-e04b-4630-bd12-db713ebf166b
+		summarizeBy: none
+		sourceColumn: Sample.Lot
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Login_Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: be82a464-688a-4018-ada0-cd619d2b9027
+		summarizeBy: none
+		sourceColumn: Sample.Login_Date
+
+		variation Variation
+			isDefault
+			relationship: fa405ee1-cdf7-4992-b3ee-048b5841e8f6
+			defaultHierarchy: LocalDateTable_c4a94b48-1992-4942-a005-48b735a03c01.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Due_Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d0b44205-a28d-483a-b3ad-905bfc7214ba
+		summarizeBy: none
+		sourceColumn: Sample.Due_Date
+
+		variation Variation
+			isDefault
+			relationship: 7ad21a9e-68b8-435c-8efc-cb9f2884f26b
+			defaultHierarchy: LocalDateTable_1f32a517-b2f9-448a-8334-c8f0ae2ff663.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Date_Completed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c3010043-8162-4e2d-b2dc-73eb65b4da3f
+		summarizeBy: none
+		sourceColumn: Sample.Date_Completed
+
+		variation Variation
+			isDefault
+			relationship: 201bac35-210f-4413-82b3-efdbd6db86af
+			defaultHierarchy: LocalDateTable_35919dc7-a2d6-4748-b458-c4e6e417220a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sample.Date_Reviewed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d41c0690-c40f-4b27-b89c-32cae502e139
+		summarizeBy: none
+		sourceColumn: Sample.Date_Reviewed
+
+		variation Variation
+			isDefault
+			relationship: 0062a40a-f020-4891-80e1-04c3e5cad9e5
+			defaultHierarchy: LocalDateTable_592f888e-54d5-4f6c-839e-47e5e0c6a4e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Test.Test_Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: bfce7ba0-2d11-483f-a33a-788fb6e71228
+		summarizeBy: sum
+		sourceColumn: Test.Test_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Test.Analysis'
+		dataType: string
+		lineageTag: e8702a2a-7e1a-4131-8e6f-ada39fa0fb6a
+		summarizeBy: none
+		sourceColumn: Test.Analysis
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Test.Instrument'
+		dataType: string
+		lineageTag: 8fa871ae-e9d6-4691-ac15-0f42486e7650
+		summarizeBy: none
+		sourceColumn: Test.Instrument
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Name'
+		dataType: string
+		lineageTag: d4f21749-3a12-4f16-b397-bec423bb7db6
+		summarizeBy: none
+		sourceColumn: Result.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Entry'
+		dataType: double
+		lineageTag: 98ecf57e-939e-42c8-a6f9-7208f6553dc7
+		summarizeBy: sum
+		sourceColumn: Result.Entry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Result.Numeric_Entry'
+		dataType: double
+		lineageTag: d1792368-71c3-41c2-83ce-cd15355e119e
+		summarizeBy: sum
+		sourceColumn: Result.Numeric_Entry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Result.Units'
+		dataType: string
+		lineageTag: 07658f6e-4e44-49c0-9fd4-5f02c6050e12
+		summarizeBy: none
+		sourceColumn: Result.Units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Min_Limit'
+		dataType: int64
+		formatString: 0
+		lineageTag: a31816f2-6e04-4178-96c9-33e8f231b82c
+		summarizeBy: sum
+		sourceColumn: Result.Min_Limit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Max_Limit'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b43ad8e-f88f-4c50-8805-9da2407a292d
+		summarizeBy: sum
+		sourceColumn: Result.Max_Limit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Alert_Limit'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ae884a8-0ce4-4997-9574-9c8d68996fc3
+		summarizeBy: sum
+		sourceColumn: Result.Alert_Limit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.In_Spec'
+		dataType: string
+		lineageTag: f87c0c90-1384-449a-8ec1-b86d7dfa3c61
+		summarizeBy: none
+		sourceColumn: Result.In_Spec
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Status'
+		dataType: string
+		lineageTag: 59398f1b-7ea7-4a53-b563-a4ed5276f5e0
+		summarizeBy: none
+		sourceColumn: Result.Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Entered_By'
+		dataType: string
+		lineageTag: 4a86d81b-d88d-4298-b4e9-267759abf436
+		summarizeBy: none
+		sourceColumn: Result.Entered_By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Entered_On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 26ff1fc0-ea38-4a3f-9efd-a0ecbb7a0aeb
+		summarizeBy: none
+		sourceColumn: Result.Entered_On
+
+		variation Variation
+			isDefault
+			relationship: aad512a8-d108-4e3f-a921-55269e134942
+			defaultHierarchy: LocalDateTable_b9975ca9-013b-4154-be63-eac0fe5c723d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Reviewed_By'
+		dataType: string
+		lineageTag: 825ba901-8bd1-4249-b86b-62564932bb8c
+		summarizeBy: none
+		sourceColumn: Result.Reviewed_By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Result.Reviewed_On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ce10294-ffe1-48dd-9eda-8c1b091660a4
+		summarizeBy: none
+		sourceColumn: Result.Reviewed_On
+
+		variation Variation
+			isDefault
+			relationship: 0071b788-95d5-4b87-b39c-5087eba1568a
+			defaultHierarchy: LocalDateTable_b10f029b-3be3-4141-9c4d-e28c13a37dba.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_OOS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 00b3a99c-9c90-4462-8955-46685ddfb519
+		summarizeBy: none
+		sourceColumn: Flag_OOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_Alert
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8f429d88-c28d-46ef-93a3-72102d8cb986
+		summarizeBy: none
+		sourceColumn: Flag_Alert
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_OOT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e54c1a88-a241-467a-a79a-a6ca7b2e39ed
+		summarizeBy: none
+		sourceColumn: Flag_OOT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_TAT_Breach
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 44aecd17-3ac4-41ee-adb0-24272b0f87ca
+		summarizeBy: none
+		sourceColumn: Flag_TAT_Breach
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flagged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05ceacd2-55fa-4651-ba5e-e70988785663
+		summarizeBy: none
+		sourceColumn: Flagged
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_Reasons
+		dataType: string
+		lineageTag: 01883876-189f-4220-863d-113bbae29b2c
+		summarizeBy: none
+		sourceColumn: Flag_Reasons
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Login Month' = DATE(YEAR(flagged_results[Sample.Login_Date]), MONTH(flagged_results[Sample.Login_Date]), 1)
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: c08b16b5-99ea-4b7d-8a63-4ab3940c3322
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition flagged_results = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\flagged_results.csv"),[Delimiter=",", Columns=33, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sample.Sample_Number", Int64.Type}, {"Sample.Text_Id", type text}, {"Sample.Sample_Type", type text}, {"Sample.Location", type text}, {"Sample.Sampling_Point", type text}, {"Sample.Product", type text}, {"Sample.Lot", type text}, {"Sample.Login_Date", type datetime}, {"Sample.Due_Date", type datetime}, {"Sample.Date_Completed", type datetime}, {"Sample.Date_Reviewed", type datetime}, {"Test.Test_Number", Int64.Type}, {"Test.Analysis", type text}, {"Test.Instrument", type text}, {"Result.Name", type text}, {"Result.Entry", type number}, {"Result.Numeric_Entry", type number}, {"Result.Units", type text}, {"Result.Min_Limit", Int64.Type}, {"Result.Max_Limit", Int64.Type}, {"Result.Alert_Limit", Int64.Type}, {"Result.In_Spec", type text}, {"Result.Status", type text}, {"Result.Entered_By", type text}, {"Result.Entered_On", type datetime}, {"Result.Reviewed_By", type text}, {"Result.Reviewed_On", type datetime}, {"Flag_OOS", type logical}, {"Flag_Alert", type logical}, {"Flag_OOT", type logical}, {"Flag_TAT_Breach", type logical}, {"Flagged", type logical}, {"Flag_Reasons", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

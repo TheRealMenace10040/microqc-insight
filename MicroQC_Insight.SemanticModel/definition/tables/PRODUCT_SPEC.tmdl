@@ -1,0 +1,82 @@
+table PRODUCT_SPEC
+	lineageTag: 9cc957d9-0468-452c-8572-cbf87deeaa5a
+
+	column SPEC_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 915a04e3-41e9-4fe8-96c1-d8165ec27f22
+		summarizeBy: count
+		sourceColumn: SPEC_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: 64256aa1-eb63-4905-aadd-9688e477df86
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_GRADE
+		dataType: string
+		lineageTag: f628282a-a49f-4a9e-86ed-cff63fbed95c
+		summarizeBy: none
+		sourceColumn: PRODUCT_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMPLING_POINT
+		dataType: string
+		lineageTag: 5ec45abe-a1d7-4f17-91bb-55e50431480b
+		summarizeBy: none
+		sourceColumn: SAMPLING_POINT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANALYSIS
+		dataType: string
+		lineageTag: 6b5d1de8-116d-4ac5-965f-07e9bdc46edf
+		summarizeBy: none
+		sourceColumn: ANALYSIS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPEC_TYPE
+		dataType: string
+		lineageTag: a845f979-45a6-467b-8142-49a9765dc025
+		summarizeBy: none
+		sourceColumn: SPEC_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIN_VALUE
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f47e7a1-061b-474d-a470-44a01b5058cf
+		summarizeBy: sum
+		sourceColumn: MIN_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAX_VALUE
+		dataType: int64
+		formatString: 0
+		lineageTag: 43c9f931-32e0-492c-a4f9-579712dcd208
+		summarizeBy: sum
+		sourceColumn: MAX_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PRODUCT_SPEC = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\PRODUCT_SPEC.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SPEC_ID", Int64.Type}, {"PRODUCT", type text}, {"PRODUCT_GRADE", type text}, {"SAMPLING_POINT", type text}, {"ANALYSIS", type text}, {"SPEC_TYPE", type text}, {"MIN_VALUE", Int64.Type}, {"MAX_VALUE", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

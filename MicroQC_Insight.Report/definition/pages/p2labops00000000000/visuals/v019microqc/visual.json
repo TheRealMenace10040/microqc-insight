@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "v019microqc",
+  "position": {
+    "x": 653,
+    "y": 655,
+    "z": 8000,
+    "height": 405,
+    "width": 613,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flagged_results"
+                    }
+                  },
+                  "Property": "Test.Analysis"
+                }
+              },
+              "queryRef": "flagged_results.Test.Analysis",
+              "nativeQueryRef": "Test.Analysis",
+              "active": true,
+              "displayName": "Analysis"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_KPIs"
+                    }
+                  },
+                  "Property": "Avg TAT (days)"
+                }
+              },
+              "queryRef": "_KPIs.Avg TAT (days)",
+              "nativeQueryRef": "Avg TAT (days)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Average TAT by analysis'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

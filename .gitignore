@@ -1,0 +1,13 @@
+# Power BI local-only files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Python
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
+
+# Watchdog rejection artifacts
+*.ERR
+*.LOG

@@ -1,0 +1,85 @@
+table INVESTIGATION
+	lineageTag: 756b0501-0184-48e2-8ebe-eec66cbd5a79
+
+	column INV_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 320766f5-1033-4080-80c9-5c62f7a228a5
+		summarizeBy: count
+		sourceColumn: INV_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: 331877ec-6e5e-46e3-820a-f53b2e7f6fce
+		summarizeBy: sum
+		sourceColumn: RESULT_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column PHASE
+		dataType: string
+		lineageTag: 53f8d886-17c0-40cd-95e5-8b536e28218d
+		summarizeBy: none
+		sourceColumn: PHASE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNABLE_CAUSE
+		dataType: string
+		lineageTag: e9caa9c1-17bd-4f89-9196-fabd76ca1e78
+		summarizeBy: none
+		sourceColumn: ASSIGNABLE_CAUSE
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPENED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a2def7b7-260a-4119-b3f5-2db68502ed99
+		summarizeBy: none
+		sourceColumn: OPENED
+
+		variation Variation
+			isDefault
+			relationship: 17325136-f46a-40ce-89f6-5e12a680ddd4
+			defaultHierarchy: LocalDateTable_db7d143a-0b5c-4f0b-9e7b-02b06c802fa5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLOSED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4af45324-5ccc-44cd-b08c-871ed5ae521c
+		summarizeBy: none
+		sourceColumn: CLOSED
+
+		variation Variation
+			isDefault
+			relationship: ae89c57f-a240-4097-aa49-7753e0edb84f
+			defaultHierarchy: LocalDateTable_6af768c8-edd7-4e49-8cbf-7826e06de9b4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAPA_ID
+		dataType: string
+		lineageTag: 91c9357b-137d-45a3-8847-bc4048a4a6e5
+		summarizeBy: none
+		sourceColumn: CAPA_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition INVESTIGATION = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\INVESTIGATION.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"INV_ID", Int64.Type}, {"RESULT_NUMBER", Int64.Type}, {"PHASE", type text}, {"ASSIGNABLE_CAUSE", type text}, {"OPENED", type datetime}, {"CLOSED", type datetime}, {"CAPA_ID", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

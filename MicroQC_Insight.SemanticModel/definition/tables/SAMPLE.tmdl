@@ -1,0 +1,236 @@
+table SAMPLE
+	lineageTag: f7d4fba8-810e-40f4-b8af-2f20b8ea3aca
+
+	column SAMPLE_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: 117337c7-8e85-42e6-b985-d00226d7b29d
+		summarizeBy: none
+		sourceColumn: SAMPLE_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TEXT_ID
+		dataType: string
+		lineageTag: a775bb3c-3932-4c9a-aa60-7ba84fc51823
+		summarizeBy: none
+		sourceColumn: TEXT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: f34a9dda-81b8-44c8-9a6d-b6472702242c
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column OLD_STATUS
+		dataType: string
+		lineageTag: ae6810c0-b389-49d5-866a-40de1de39d5b
+		summarizeBy: none
+		sourceColumn: OLD_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOGIN_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0c63a5d2-8cdb-45f8-8230-27feed8b6f6c
+		summarizeBy: none
+		sourceColumn: LOGIN_DATE
+
+		variation Variation
+			isDefault
+			relationship: 1a2433fb-f2bb-4a5a-83bc-8d98434fc6b2
+			defaultHierarchy: LocalDateTable_b534babe-45ed-4a16-98e4-864773c31e0c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOGIN_BY
+		dataType: string
+		lineageTag: 04664cec-022c-4692-8e89-3f8e0ea50552
+		summarizeBy: none
+		sourceColumn: LOGIN_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANGED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 701a5b7c-c3d3-49e3-969f-f388fee24c98
+		summarizeBy: none
+		sourceColumn: CHANGED_ON
+
+		variation Variation
+			isDefault
+			relationship: e80e6777-b0bc-4482-b991-b7157b82fbad
+			defaultHierarchy: LocalDateTable_caf16bb6-7484-4576-88ea-228c98a59126.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMPLE_TYPE
+		dataType: string
+		lineageTag: b76eadbe-c9d1-4878-bd85-c121a6947fe8
+		summarizeBy: none
+		sourceColumn: SAMPLE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRIPTION
+		dataType: string
+		lineageTag: b26a69e0-c6a1-45c8-a356-0a62cb040c4b
+		summarizeBy: none
+		sourceColumn: DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATION
+		dataType: string
+		lineageTag: 1264c773-714b-4122-a42a-45ad48a734a9
+		summarizeBy: none
+		sourceColumn: LOCATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: ecb2f13c-85e2-4221-9142-b6d782433c07
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_GRADE
+		dataType: string
+		lineageTag: 98adc5bc-ecec-4e28-b8a1-a7cd56708422
+		summarizeBy: none
+		sourceColumn: PRODUCT_GRADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMPLING_POINT
+		dataType: string
+		lineageTag: b2ad7f24-60c6-41ea-8475-c4f05d27a199
+		summarizeBy: none
+		sourceColumn: SAMPLING_POINT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPEC_TYPE
+		dataType: string
+		lineageTag: c31558fc-2e10-4fdd-8be9-33c7412191bf
+		summarizeBy: none
+		sourceColumn: SPEC_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOT
+		dataType: string
+		lineageTag: b19ed816-934c-4370-ae6d-bae2365f1340
+		summarizeBy: none
+		sourceColumn: LOT
+
+		annotation SummarizationSetBy = Automatic
+
+	column STANDARD
+		dataType: string
+		lineageTag: 3d9ab6f9-6e48-4e2d-a5aa-3915b63ed03e
+		summarizeBy: none
+		sourceColumn: STANDARD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSIGNED_OPERATOR
+		dataType: string
+		lineageTag: 1c469be0-9ae4-4598-9e17-6bae99de217c
+		summarizeBy: none
+		sourceColumn: ASSIGNED_OPERATOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIORITY
+		dataType: string
+		lineageTag: 7a63ce9b-38a1-435d-b395-8f87ca71f63f
+		summarizeBy: none
+		sourceColumn: PRIORITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column DUE_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8c2467c6-4c77-4e60-967b-37e391894c74
+		summarizeBy: none
+		sourceColumn: DUE_DATE
+
+		variation Variation
+			isDefault
+			relationship: fa5d8c38-d1bc-426b-9b96-1ee6e50eba55
+			defaultHierarchy: LocalDateTable_ab6abde8-3fe7-42e5-bca9-2a0784197553.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_RECEIVED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eb0f7a4e-9ddd-46ff-8e70-f46138ccc63b
+		summarizeBy: none
+		sourceColumn: DATE_RECEIVED
+
+		variation Variation
+			isDefault
+			relationship: fbf2e38e-b884-4e05-b5ca-567ffc19c939
+			defaultHierarchy: LocalDateTable_9376e122-f1d3-401f-aad3-1d56338eeb8b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_COMPLETED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ca73628-aa1f-4f51-ad95-e5400964c837
+		summarizeBy: none
+		sourceColumn: DATE_COMPLETED
+
+		variation Variation
+			isDefault
+			relationship: e6ffb774-2071-4265-9fae-456de29fe980
+			defaultHierarchy: LocalDateTable_e50c5b23-4ccd-4695-bd5b-cfd3997a4313.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_REVIEWED
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 49c77dcc-3f19-411d-8011-00140a130a59
+		summarizeBy: none
+		sourceColumn: DATE_REVIEWED
+
+		variation Variation
+			isDefault
+			relationship: 86908fa3-fac8-4215-8ce6-dac5e37bbfae
+			defaultHierarchy: LocalDateTable_9440864b-8ee3-4a58-9754-9c11f149dd32.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEWER
+		dataType: string
+		lineageTag: 557d759e-8072-4edc-837e-8c65bc2bbe9f
+		summarizeBy: none
+		sourceColumn: REVIEWER
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SAMPLE = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\SAMPLE.csv"),[Delimiter=",", Columns=23, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SAMPLE_NUMBER", Int64.Type}, {"TEXT_ID", type text}, {"STATUS", type text}, {"OLD_STATUS", type text}, {"LOGIN_DATE", type datetime}, {"LOGIN_BY", type text}, {"CHANGED_ON", type datetime}, {"SAMPLE_TYPE", type text}, {"DESCRIPTION", type text}, {"LOCATION", type text}, {"PRODUCT", type text}, {"PRODUCT_GRADE", type text}, {"SAMPLING_POINT", type text}, {"SPEC_TYPE", type text}, {"LOT", type text}, {"STANDARD", type text}, {"ASSIGNED_OPERATOR", type text}, {"PRIORITY", type text}, {"DUE_DATE", type datetime}, {"DATE_RECEIVED", type datetime}, {"DATE_COMPLETED", type datetime}, {"DATE_REVIEWED", type datetime}, {"REVIEWER", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

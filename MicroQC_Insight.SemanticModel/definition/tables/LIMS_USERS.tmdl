@@ -1,0 +1,27 @@
+table LIMS_USERS
+	lineageTag: eca4a59d-2587-41ae-85c9-bc84baa4e010
+
+	column USER_NAME
+		dataType: string
+		lineageTag: 4adb887a-cbff-4388-9013-209bf6cbead1
+		summarizeBy: none
+		sourceColumn: USER_NAME
+
+	column FULL_NAME
+		dataType: string
+		lineageTag: e75b5119-ece2-479a-bc40-55f9a1385678
+		summarizeBy: none
+		sourceColumn: FULL_NAME
+
+	partition LIMS_USERS = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\LIMS_USERS.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"USER_NAME", type text}, {"FULL_NAME", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "v038microqc",
+  "position": {
+    "x": 653,
+    "y": 230,
+    "z": 9000,
+    "height": 405,
+    "width": 1247,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LOT"
+                    }
+                  },
+                  "Property": "LOT_NUMBER"
+                }
+              },
+              "queryRef": "LOT.LOT_NUMBER",
+              "nativeQueryRef": "LOT_NUMBER",
+              "displayName": "Lot"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LOT"
+                    }
+                  },
+                  "Property": "PRODUCT"
+                }
+              },
+              "queryRef": "LOT.PRODUCT",
+              "nativeQueryRef": "PRODUCT",
+              "displayName": "Product"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LOT"
+                    }
+                  },
+                  "Property": "MFG_DATE"
+                }
+              },
+              "queryRef": "LOT.MFG_DATE",
+              "nativeQueryRef": "MFG_DATE",
+              "displayName": "Manufactured"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LOT"
+                    }
+                  },
+                  "Property": "DISPOSITION"
+                }
+              },
+              "queryRef": "LOT.DISPOSITION",
+              "nativeQueryRef": "DISPOSITION",
+              "displayName": "Disposition"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LOT"
+                    }
+                  },
+                  "Property": "RELEASED_ON"
+                }
+              },
+              "queryRef": "LOT.RELEASED_ON",
+              "nativeQueryRef": "RELEASED_ON",
+              "displayName": "Released"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_KPIs"
+                    }
+                  },
+                  "Property": "Avg Last Sample to Release (days)"
+                }
+              },
+              "queryRef": "_KPIs.Avg Last Sample to Release (days)",
+              "nativeQueryRef": "Avg Last Sample to Release (days)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Released lots'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

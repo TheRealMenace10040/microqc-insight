@@ -1,0 +1,138 @@
+createOrReplace
+
+	table _KPIs
+
+		measure 'Total Results' = COUNTROWS(flagged_results)
+			formatString: #,0
+			displayFolder: Volume
+
+		measure 'Samples Logged' = DISTINCTCOUNT(flagged_results[Sample.Sample_Number])
+			formatString: #,0
+			displayFolder: Volume
+
+		measure 'OOS Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOS] = TRUE())
+			formatString: #,0
+			displayFolder: Quality
+
+		measure 'OOS Rate' = DIVIDE([OOS Count], [Total Results])
+			formatString: 0.00%
+			displayFolder: Quality
+
+		measure 'Alert Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_Alert] = TRUE())
+			formatString: #,0
+			displayFolder: Quality
+
+		measure 'Alert Rate' = DIVIDE([Alert Count], [Total Results])
+			formatString: 0.00%
+			displayFolder: Quality
+
+		measure 'OOT Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOT] = TRUE())
+			formatString: #,0
+			displayFolder: Quality
+
+		measure 'Right First Time %' = DIVIDE(CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOS] = FALSE(), flagged_results[Flag_Alert] = FALSE(), flagged_results[Flag_OOT] = FALSE()), [Total Results])
+			formatString: 0.0%
+			displayFolder: Quality
+
+		measure 'Invalidated Results' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Result.Status] = "X")
+			formatString: #,0
+			displayFolder: Quality
+
+		measure 'Retest Rate' = DIVIDE(COUNTROWS(FILTER(TEST, LEN(TEST[RETEST_OF] & "") > 0)), COUNTROWS(TEST))
+			formatString: 0.00%
+			displayFolder: Quality
+
+		measure 'TAT SLA (days)' = 4
+			formatString: 0
+			displayFolder: Lab Ops
+
+		measure 'Avg TAT (days)' = AVERAGEX(FILTER(flagged_results, NOT ISBLANK(flagged_results[Sample.Date_Completed])), (flagged_results[Sample.Date_Completed] - flagged_results[Sample.Login_Date]) * 1.0)
+			formatString: 0.0
+			displayFolder: Lab Ops
+
+		measure 'Median TAT (days)' = MEDIANX(FILTER(flagged_results, NOT ISBLANK(flagged_results[Sample.Date_Completed])), (flagged_results[Sample.Date_Completed] - flagged_results[Sample.Login_Date]) * 1.0)
+			formatString: 0.0
+			displayFolder: Lab Ops
+
+		measure 'TAT Breach Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_TAT_Breach] = TRUE())
+			formatString: #,0
+			displayFolder: Lab Ops
+
+		measure 'TAT Breach Rate' = DIVIDE([TAT Breach Count], CALCULATE(COUNTROWS(flagged_results), NOT ISBLANK(flagged_results[Sample.Date_Completed])))
+			formatString: 0.0%
+			displayFolder: Lab Ops
+
+		measure 'On-Time %' = 1 - [TAT Breach Rate]
+			formatString: 0.0%
+			displayFolder: Lab Ops
+
+		measure 'Avg Result' = AVERAGE(flagged_results[Result.Numeric_Entry])
+			formatString: 0.00
+			displayFolder: Trending
+
+		measure 'Max Result' = MAX(flagged_results[Result.Numeric_Entry])
+			formatString: 0.00
+			displayFolder: Trending
+
+		measure 'Action Limit' = MAX(flagged_results[Result.Max_Limit])
+			formatString: 0.##
+			displayFolder: Trending
+
+		measure 'Alert Limit' = MAX(flagged_results[Result.Alert_Limit])
+			formatString: 0.##
+			displayFolder: Trending
+
+		measure 'Investigations' = COUNTROWS(INVESTIGATION)
+			formatString: #,0
+			displayFolder: Investigations
+
+		measure 'Investigations with CAPA' = COUNTROWS(FILTER(INVESTIGATION, LEN(INVESTIGATION[CAPA_ID]) > 0))
+			formatString: #,0
+			displayFolder: Investigations
+
+		measure 'CAPA Rate' = DIVIDE([Investigations with CAPA], [Investigations])
+			formatString: 0%
+			displayFolder: Investigations
+
+		measure 'Lab Error Rate' = DIVIDE(COUNTROWS(FILTER(INVESTIGATION, LEN(INVESTIGATION[ASSIGNABLE_CAUSE]) > 0)), [Investigations])
+			formatString: 0%
+			displayFolder: Investigations
+
+		measure 'Avg Investigation Days' = AVERAGEX(INVESTIGATION, (INVESTIGATION[CLOSED] - INVESTIGATION[OPENED]) * 1.0)
+			formatString: 0.0
+			displayFolder: Investigations
+
+		measure 'Lots Released' = CALCULATE(COUNTROWS(LOT), LOT[DISPOSITION] = "RELEASED")
+			formatString: #,0
+			displayFolder: Lot Release
+
+		measure 'Lots Not Released' = COUNTROWS(LOT) - [Lots Released]
+			formatString: #,0
+			displayFolder: Lot Release
+
+		measure 'Avg Mfg to Release (days)' = AVERAGEX(FILTER(LOT, NOT ISBLANK(LOT[RELEASED_ON])), (LOT[RELEASED_ON] - LOT[MFG_DATE]) * 1.0)
+			formatString: 0.0
+			displayFolder: Lot Release
+
+		measure 'Avg Last Sample to Release (days)' = AVERAGEX(FILTER(LOT, NOT ISBLANK(LOT[RELEASED_ON])), VAR lastLogin = CALCULATE(MAX(SAMPLE[LOGIN_DATE])) RETURN IF(NOT ISBLANK(lastLogin), (LOT[RELEASED_ON] - lastLogin) * 1.0))
+			formatString: 0.0
+			displayFolder: Lot Release
+
+		measure 'Duplicate Result Rows' = COUNTROWS(RESULT) - DISTINCTCOUNT(RESULT[RESULT_NUMBER])
+			formatString: #,0
+			displayFolder: Data Integrity
+
+		measure 'Results Missing Reviewer' = COUNTROWS(FILTER(RESULT, LEN(RESULT[REVIEWED_BY]) = 0))
+			formatString: #,0
+			displayFolder: Data Integrity
+
+		column Value
+			dataType: int64
+			isHidden
+			summarizeBy: none
+			isNameInferred
+			sourceColumn: [Value]
+
+		partition _KPIs = calculated
+			mode: import
+			source = {1}

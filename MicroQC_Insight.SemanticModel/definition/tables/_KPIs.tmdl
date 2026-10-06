@@ -1,0 +1,175 @@
+table _KPIs
+	lineageTag: e98d74e5-3d9d-461f-b23c-176b7ee477e9
+
+	measure 'Total Results' = COUNTROWS(flagged_results)
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 2409482e-b7c4-4298-8d7d-effcab04c043
+
+	measure 'Samples Logged' = DISTINCTCOUNT(flagged_results[Sample.Sample_Number])
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: e7b2462e-cda8-4ffb-8134-b7706ad82b11
+
+	measure 'OOS Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOS] = TRUE())
+		formatString: #,0
+		displayFolder: Quality
+		lineageTag: 58b53acd-89cb-458c-8f19-256a217745df
+
+	measure 'OOS Rate' = DIVIDE([OOS Count], [Total Results])
+		formatString: 0.00%
+		displayFolder: Quality
+		lineageTag: ee0afcde-47a2-445c-bcab-9bd12c41af92
+
+	measure 'Alert Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_Alert] = TRUE())
+		formatString: #,0
+		displayFolder: Quality
+		lineageTag: f06c78a8-960e-41f7-9488-c957f242637d
+
+	measure 'Alert Rate' = DIVIDE([Alert Count], [Total Results])
+		formatString: 0.00%
+		displayFolder: Quality
+		lineageTag: 3e4dc54e-7ff0-4f25-a78e-3e28cab9ae21
+
+	measure 'OOT Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOT] = TRUE())
+		formatString: #,0
+		displayFolder: Quality
+		lineageTag: c765c4e3-c7a2-424d-8f7a-f0ab22a3e068
+
+	measure 'Right First Time %' = DIVIDE(CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_OOS] = FALSE(), flagged_results[Flag_Alert] = FALSE(), flagged_results[Flag_OOT] = FALSE()), [Total Results])
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: 9a91b8cc-ab8d-4c14-86f3-8cd5e0f839a9
+
+	measure 'Invalidated Results' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Result.Status] = "X")
+		formatString: #,0
+		displayFolder: Quality
+		lineageTag: 55f484bc-18e0-4572-af85-930ccd846281
+
+	measure 'Retest Rate' = DIVIDE(COUNTROWS(FILTER(TEST, LEN(TEST[RETEST_OF] & "") > 0)), COUNTROWS(TEST))
+		formatString: 0.00%
+		displayFolder: Quality
+		lineageTag: cdbb2c9c-eafd-4e57-98ec-36498cce870c
+
+	measure 'TAT SLA (days)' = 4
+		formatString: 0
+		displayFolder: Lab Ops
+		lineageTag: ba22f0f7-08b5-44f6-a6b9-9e287bbf648d
+
+	measure 'Avg TAT (days)' = AVERAGEX(FILTER(flagged_results, NOT ISBLANK(flagged_results[Sample.Date_Completed])), (flagged_results[Sample.Date_Completed] - flagged_results[Sample.Login_Date]) * 1.0)
+		formatString: 0.0
+		displayFolder: Lab Ops
+		lineageTag: 1b5f6224-ea09-475b-be5a-57b583d785c8
+
+	measure 'Median TAT (days)' = MEDIANX(FILTER(flagged_results, NOT ISBLANK(flagged_results[Sample.Date_Completed])), (flagged_results[Sample.Date_Completed] - flagged_results[Sample.Login_Date]) * 1.0)
+		formatString: 0.0
+		displayFolder: Lab Ops
+		lineageTag: 535f47b0-5f95-4f5a-b046-b35563c91e1a
+
+	measure 'TAT Breach Count' = CALCULATE(COUNTROWS(flagged_results), flagged_results[Flag_TAT_Breach] = TRUE())
+		formatString: #,0
+		displayFolder: Lab Ops
+		lineageTag: af35c275-8dd4-4b90-88b4-85b089b34a90
+
+	measure 'TAT Breach Rate' = DIVIDE([TAT Breach Count], CALCULATE(COUNTROWS(flagged_results), NOT ISBLANK(flagged_results[Sample.Date_Completed])))
+		formatString: 0.0%
+		displayFolder: Lab Ops
+		lineageTag: caea718c-3c75-4f30-bc91-dc028d5d6e88
+
+	measure 'On-Time %' = 1 - [TAT Breach Rate]
+		formatString: 0.0%
+		displayFolder: Lab Ops
+		lineageTag: 5a2e8596-3a7a-4bce-92dd-467ce13c40c5
+
+	measure 'Avg Result' = AVERAGE(flagged_results[Result.Numeric_Entry])
+		formatString: 0.00
+		displayFolder: Trending
+		lineageTag: 879ab477-ec28-49be-b168-7ece5e8de030
+
+	measure 'Max Result' = MAX(flagged_results[Result.Numeric_Entry])
+		formatString: 0.00
+		displayFolder: Trending
+		lineageTag: 63b5b9ad-fa97-4fba-8cba-3fae89110761
+
+	measure 'Action Limit' = MAX(flagged_results[Result.Max_Limit])
+		formatString: 0.##
+		displayFolder: Trending
+		lineageTag: dfbfcfbc-1307-4970-968b-5864100d1ace
+
+	measure 'Alert Limit' = MAX(flagged_results[Result.Alert_Limit])
+		formatString: 0.##
+		displayFolder: Trending
+		lineageTag: 0e25f438-e40f-4b0f-b13c-28a6a943512b
+
+	measure Investigations = COUNTROWS(INVESTIGATION)
+		formatString: #,0
+		displayFolder: Investigations
+		lineageTag: df7e8884-e670-47f6-9c3a-19df3bceb45a
+
+	measure 'Investigations with CAPA' = COUNTROWS(FILTER(INVESTIGATION, LEN(INVESTIGATION[CAPA_ID]) > 0))
+		formatString: #,0
+		displayFolder: Investigations
+		lineageTag: 91e7afbd-585f-4b2d-b588-4781e785a944
+
+	measure 'CAPA Rate' = DIVIDE([Investigations with CAPA], [Investigations])
+		formatString: 0%
+		displayFolder: Investigations
+		lineageTag: fbf8015b-4319-4a78-b755-5dc70159d45d
+
+	measure 'Lab Error Rate' = DIVIDE(COUNTROWS(FILTER(INVESTIGATION, LEN(INVESTIGATION[ASSIGNABLE_CAUSE]) > 0)), [Investigations])
+		formatString: 0%
+		displayFolder: Investigations
+		lineageTag: c7eef32d-c00a-416c-8bd3-95ecb15de9c9
+
+	measure 'Avg Investigation Days' = AVERAGEX(INVESTIGATION, (INVESTIGATION[CLOSED] - INVESTIGATION[OPENED]) * 1.0)
+		formatString: 0.0
+		displayFolder: Investigations
+		lineageTag: a1ccef10-ddf3-457e-ad27-22193a83c3c6
+
+	measure 'Lots Released' = CALCULATE(COUNTROWS(LOT), LOT[DISPOSITION] = "RELEASED")
+		formatString: #,0
+		displayFolder: Lot Release
+		lineageTag: 74a280f6-9e14-43b8-b479-496400a3bf51
+
+	measure 'Lots Not Released' = COUNTROWS(LOT) - [Lots Released]
+		formatString: #,0
+		displayFolder: Lot Release
+		lineageTag: 678dda45-7789-4adc-afc3-c68f75a2170d
+
+	measure 'Avg Mfg to Release (days)' = AVERAGEX(FILTER(LOT, NOT ISBLANK(LOT[RELEASED_ON])), (LOT[RELEASED_ON] - LOT[MFG_DATE]) * 1.0)
+		formatString: 0.0
+		displayFolder: Lot Release
+		lineageTag: 630819d5-e052-4e84-91a4-225c62883e86
+
+	measure 'Avg Last Sample to Release (days)' = AVERAGEX(FILTER(LOT, NOT ISBLANK(LOT[RELEASED_ON])), VAR lastLogin = CALCULATE(MAX(SAMPLE[LOGIN_DATE])) RETURN IF(NOT ISBLANK(lastLogin), (LOT[RELEASED_ON] - lastLogin) * 1.0))
+		formatString: 0.0
+		displayFolder: Lot Release
+		lineageTag: f8b64135-5950-4070-9b5f-dec3e8b90d88
+
+	measure 'Duplicate Result Rows' = COUNTROWS(RESULT) - DISTINCTCOUNT(RESULT[RESULT_NUMBER])
+		formatString: #,0
+		displayFolder: Data Integrity
+		lineageTag: fd72f532-fdbe-42ff-852a-ed3d580416ec
+
+	measure 'Results Missing Reviewer' = COUNTROWS(FILTER(RESULT, LEN(RESULT[REVIEWED_BY]) = 0))
+		formatString: #,0
+		displayFolder: Data Integrity
+		lineageTag: 133e2bdd-b1fc-450c-9fe9-8a5a337f5fae
+
+	measure 'Avg % of Action Limit' = AVERAGEX(FILTER(flagged_results, flagged_results[Result.Max_Limit] > 0), DIVIDE(flagged_results[Result.Numeric_Entry], flagged_results[Result.Max_Limit]))
+		formatString: 0.0%
+		displayFolder: Trending
+		lineageTag: 374a8f0a-59ad-4fdd-9e71-bf94bc6e6bd9
+
+	column Value
+		dataType: int64
+		isHidden
+		lineageTag: 183befa6-8661-4170-aaa0-eadfb1c1b762
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _KPIs = calculated
+		mode: import
+		source = {1}
+

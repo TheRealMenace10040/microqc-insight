@@ -1,0 +1,41 @@
+createOrReplace
+
+	relationship AutoDetected_b551f346-066c-4564-884f-a7e1021ff8d5
+		fromColumn: TEST.SAMPLE_NUMBER
+		toColumn: SAMPLE.SAMPLE_NUMBER
+
+	relationship rel_SAMPLE_LOT
+		fromColumn: SAMPLE.LOT
+		toColumn: LOT.LOT_NUMBER
+
+	relationship rel_TEST_INSTRUMENTS
+		fromColumn: TEST.INSTRUMENT
+		toColumn: INSTRUMENTS.NAME
+
+	table LIMS_USERS
+
+		column USER_NAME
+			dataType: string
+			summarizeBy: none
+			sourceColumn: USER_NAME
+
+		column FULL_NAME
+			dataType: string
+			summarizeBy: none
+			sourceColumn: FULL_NAME
+
+		partition LIMS_USERS = m
+			mode: import
+			source =
+					let
+					    Source = Csv.Document(File.Contents("C:\Users\denni\Documents\LabWare-Portfolio\exports\LIMS_USERS.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"USER_NAME", type text}, {"FULL_NAME", type text}})
+					in
+					    #"Changed Type"
+
+		annotation PBI_ResultType = Table
+
+	relationship rel_RESULT_USERS
+		fromColumn: RESULT.ENTERED_BY
+		toColumn: LIMS_USERS.USER_NAME

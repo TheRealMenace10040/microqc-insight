@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "v027microqc",
+  "position": {
+    "x": 20,
+    "y": 230,
+    "z": 6000,
+    "height": 405,
+    "width": 1880,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flagged_results"
+                    }
+                  },
+                  "Property": "Login Month"
+                }
+              },
+              "queryRef": "flagged_results.Login Month",
+              "nativeQueryRef": "Login Month",
+              "active": true,
+              "displayName": "Month"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flagged_results"
+                    }
+                  },
+                  "Property": "Sample.Location"
+                }
+              },
+              "queryRef": "flagged_results.Sample.Location",
+              "nativeQueryRef": "Sample.Location",
+              "displayName": "Location"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_KPIs"
+                    }
+                  },
+                  "Property": "Avg % of Action Limit"
+                }
+              },
+              "queryRef": "_KPIs.Avg % of Action Limit",
+              "nativeQueryRef": "Avg % of Action Limit"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Results as % of action limit, by month and location — note CR-102 drifting upward'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

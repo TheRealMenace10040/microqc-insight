@@ -1,0 +1,10 @@
+EVALUATE
+ROW(
+    "Total Results", [Total Results], "Samples Logged", [Samples Logged],
+    "OOS Count", [OOS Count], "OOS Rate", [OOS Rate], "Alert Count", [Alert Count], "OOT Count", [OOT Count],
+    "RFT", [Right First Time %], "Invalidated", [Invalidated Results], "Retest Rate", [Retest Rate],
+    "Avg TAT", [Avg TAT (days)], "Median TAT", [Median TAT (days)], "TAT Breach", [TAT Breach Count], "TAT Breach Rate", [TAT Breach Rate],
+    "Investigations", [Investigations], "CAPA", [Investigations with CAPA], "Lab Error Rate", [Lab Error Rate], "Avg Inv Days", [Avg Investigation Days],
+    "Lots Released", [Lots Released], "Avg Mfg->Rel", [Avg Mfg to Release (days)], "Avg Last->Rel", [Avg Last Sample to Release (days)],
+    "Dup rows", [Duplicate Result Rows], "Missing reviewer", [Results Missing Reviewer]
+)

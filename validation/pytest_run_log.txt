@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/labware-portfolio
+plugins: anyio-4.13.0, Faker-40.39.0
+collecting ... collected 19 items
+
+tests/test_lims_watchdog.py::test_validate_schema_passes_on_good_file PASSED [  5%]
+tests/test_lims_watchdog.py::test_validate_schema_flags_missing_columns PASSED [ 10%]
+tests/test_lims_watchdog.py::test_validate_schema_flags_empty_file PASSED [ 15%]
+tests/test_lims_watchdog.py::test_reject_file_writes_err_and_log PASSED  [ 21%]
+tests/test_rules_engine.py::test_oos_flags_value_at_max_limit PASSED     [ 26%]
+tests/test_rules_engine.py::test_oos_does_not_flag_value_just_below_max_limit PASSED [ 31%]
+tests/test_rules_engine.py::test_oos_flags_value_above_max_limit PASSED  [ 36%]
+tests/test_rules_engine.py::test_oos_handles_missing_numeric_entry_gracefully PASSED [ 42%]
+tests/test_rules_engine.py::test_alert_flags_value_between_alert_and_max PASSED [ 47%]
+tests/test_rules_engine.py::test_alert_does_not_fire_once_result_is_oos PASSED [ 52%]
+tests/test_rules_engine.py::test_alert_does_not_fire_below_alert_limit PASSED [ 57%]
+tests/test_rules_engine.py::test_tat_breach_flagged_when_over_sla PASSED [ 63%]
+tests/test_rules_engine.py::test_tat_not_flagged_within_sla PASSED       [ 68%]
+tests/test_rules_engine.py::test_tat_not_flagged_when_still_in_progress PASSED [ 73%]
+tests/test_rules_engine.py::test_oot_flags_a_spike_after_a_stable_baseline PASSED [ 78%]
+tests/test_rules_engine.py::test_oot_does_not_fire_with_insufficient_baseline PASSED [ 84%]
+tests/test_rules_engine.py::test_oot_groups_are_independent_by_sampling_point PASSED [ 89%]
+tests/test_rules_engine.py::test_apply_all_rules_adds_expected_columns PASSED [ 94%]
+tests/test_rules_engine.py::test_apply_all_rules_reason_string_matches_flags PASSED [100%]
+
+============================== 19 passed in 0.39s ==============================
